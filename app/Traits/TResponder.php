@@ -23,7 +23,7 @@ trait TResponder
         $data = null,
         string $message = 'Successful',
         int $statusCode = Response::HTTP_OK
-    ) : JsonResponse {
+    ): JsonResponse {
         $response = [
             'success' => true,
             'message' => $message,
@@ -43,7 +43,7 @@ trait TResponder
         array $data = null,
         $message = 'Unsuccessful',
         $statusCode = Response::HTTP_BAD_REQUEST
-    ) : JsonResponse {
+    ): JsonResponse {
         $response = [
             'success' => false,
             'message' => $message,
@@ -61,7 +61,7 @@ trait TResponder
     public function fatalError(
         Exception $e,
         int $statusCode = Response::HTTP_INTERNAL_SERVER_ERROR
-    ) : JsonResponse {
+    ): JsonResponse {
         $line = $e->getTrace();
 
         $error = [

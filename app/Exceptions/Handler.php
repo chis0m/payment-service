@@ -15,6 +15,7 @@ use Throwable;
 class Handler extends ExceptionHandler
 {
     use TResponder;
+
     /**
      * A list of the exception types that are not reported.
      *
@@ -43,7 +44,7 @@ class Handler extends ExceptionHandler
      *
      * @return void
      */
-    public function register() :void
+    public function register(): void
     {
         $this->reportable(function (Throwable $e) {
             //
@@ -51,7 +52,7 @@ class Handler extends ExceptionHandler
     }
 
 
-        public function render($request, Throwable $e)
+    public function render($request, Throwable $e)
     {
         if ($e instanceof PaymentException) {
             $code = $e->getCode();
@@ -59,7 +60,7 @@ class Handler extends ExceptionHandler
             return $this->error(null, $message, $code);
         }
 
-            // If Model Not found (e.g: not existing user error)
+        // If Model Not found (e.g: not existing user error)
         if ($e instanceof ModelNotFoundException) {
             $model = ucwords(strtolower(class_basename($e->getModel())));
             return $this->error(

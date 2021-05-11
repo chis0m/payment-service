@@ -1,0 +1,28 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+parameters:
+    # The level 8 is the highest level
+    level: 5
+    paths:
+        - app
+        - bootstrap
+        - config
+        - routes
+        - tests
+
+    excludePaths:
+        - tests
+        - database/*
+        - public/*
+        - resources/*
+        - bootstrap/cache/*
+        - bootstrap/autoload.php
+        - */factories/*
+        - */migrations/*
+        - */seeds/*
+        - *.blade.php
+        - *.js
+        - routes/console.php
+
+    checkMissingIterableValueType: false
+    treatPhpDocTypesAsCertain: false
